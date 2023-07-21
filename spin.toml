@@ -1,5 +1,4 @@
 spin_manifest_version = "1"
-authors = ["bharattech <bharattech@protonmail.com>"]
 description = "Rust India upcoming Events"
 name = "serverless-events"
 trigger = { type = "http", base = "/" }

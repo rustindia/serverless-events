@@ -1,6 +1,7 @@
   // Called when the page loads to properly initialize the like button
   function onLoad() {
     getEvents();
+    document.getElementById("rievents").style.opacity='1';
   }
   
   window.onload = onLoad;
