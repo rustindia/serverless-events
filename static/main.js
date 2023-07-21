@@ -7,7 +7,7 @@
   
   // === UTILITIES ===
   const prodEnv = true;
-  const API_BASE_URL = prodEnv ? "https://serverless-events-api.fermyon.app" : "http://127.0.0.1:3000";
+  const API_BASE_URL = prodEnv ? "https://serverless-events-zkwagd06.fermyon.app" : "http://127.0.0.1:3000";
   
   function getEvents() {
   
