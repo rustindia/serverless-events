@@ -1,6 +1,5 @@
 [package]
 name = "serverless-events"
-authors = ["bharattech <bharattech@protonmail.com>"]
 description = "Rust India upcoming Events"
 version = "0.1.0"
 edition = "2021"
