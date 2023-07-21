@@ -7,7 +7,7 @@ version = "0.1.0"
 
 [[component]]
 id = "serverless-events"
-source = "target/wasm32-wasi/release/serverless-events.wasm"
+source = "target/wasm32-wasi/release/serverless_events.wasm"
 allowed_http_hosts = ["https://www.meetup.com", "https://hasgeek.com", "https://lu.ma"]
 key_value_stores = ["default"]
 [component.trigger]
