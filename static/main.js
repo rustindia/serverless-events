@@ -35,14 +35,14 @@
         namePara.className = "col py-2 border-bottom-secondary-subtle";
         namePara.textContent = event.name;
 
-        communityPara.className = "col-3 py-2 border-bottom-secondary-subtle";
+        communityPara.className = "col-3 py-2 px-1 border-bottom-secondary-subtle";
         communityPara.textContent = event.community;
 
         datePara.className = "col-4 py-2 px-2 border-bottom-secondary-subtle";
         datePara.textContent = event.date;
 
-        registerPara.className = "col-2 py-2 border-bottom-secondary-subtle";
-        registerPara.innerHTML = '<a href='+ event.url +' target="_blank">Register</a>';
+        registerPara.className = "col-2 py-2 px-1 border-bottom-secondary-subtle";
+        registerPara.innerHTML = '<a style="margin-left: 10px;" href='+ event.url +' target="_blank">Know More</a>';
         
         // Append the HTML elements to the container
         eventDiv.classList.add("row")
