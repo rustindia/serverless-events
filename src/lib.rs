@@ -24,7 +24,7 @@ struct DataRustIndiaEvents {
 const MEETUP_BASE_URL: &str = "https://www.meetup.com";
 const HASGEEK_BASE_URL: &str = "https://hasgeek.com";
 const HASGEEK_PAST_URL: &str = "past.projects?page=1";
-const LUMA_RUST_MUMBAI_URL: &str = "https://lu.ma/rust-mumbai";
+const LUMA_BASE_URL: &str = "https://lu.ma/rust-mumbai";
 
 fn fetch_html(url: &str) -> Result<String> {
     let res: http::Response<Option<Bytes>> = spin_sdk::outbound_http::send_request(
@@ -50,8 +50,8 @@ fn fetch_hasgeek_past_data(location: &str) -> Result<String> {
     fetch_html(&url)
 }
 
-fn fetch_luma_rust_mumbai_data() -> Result<String> {
-    fetch_html(LUMA_RUST_MUMBAI_URL)
+fn fetch_luma_data() -> Result<String> {
+    fetch_html(LUMA_BASE_URL)
 }
 
 #[http_component]
@@ -75,18 +75,18 @@ fn handle_serverless_events(_req: Request) -> Result<Response> {
 
     let date_now = Utc::now();
     let diff: Duration = date_now.signed_duration_since(Utc.datetime_from_str(&last_fetch_at, "%Y-%m-%d %H:%M:%S%.f UTC")?);
-    let one_hour = Duration::minutes(1);
+    let one_hour = Duration::minutes(60);
 
-    println!("date_now: {}", date_now);
-    println!("last_fetch_at: {}", &last_fetch_at);
+    // println!("date_now: {}", date_now);
+    // println!("last_fetch_at: {}", &last_fetch_at);
     
     if diff > one_hour {
         let now_date = Utc::now().to_string();
         store.set("last_fetch_at", &now_date)?;
-        println!("set_last_fetch_at: {}", now_date);
+        //println!("set_last_fetch_at: {}", now_date);
 
         for loc_url in &meetup_loc {
-            println!("{}", loc_url);
+            //println!("{}", loc_url);
             let body = fetch_meetup_data(loc_url)?;
 
             let document = Html::parse_document(&body);
@@ -122,7 +122,7 @@ fn handle_serverless_events(_req: Request) -> Result<Response> {
         }
 
         for loc_url in &hasgeek_loc {
-            println!("hasgeek_loc, {}", loc_url);
+            //println!("hasgeek_loc, {}", loc_url);
             //hasgeek upcoming events
 
             let body = fetch_hasgeek_upcoming_data(loc_url)?;
@@ -259,7 +259,7 @@ fn handle_serverless_events(_req: Request) -> Result<Response> {
 
         //println!("lu.ma_rust-mumbai");
 
-        let body = fetch_luma_rust_mumbai_data()?;
+        let body = fetch_luma_data()?;
 
         let document = Html::parse_document(&body);
         let title_selector = Selector::parse("h1.title").unwrap();
