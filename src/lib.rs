@@ -128,7 +128,7 @@ fn handle_serverless_events(_req: Request) -> Result<Response> {
     let date_now = Utc::now();
     let diff: Duration = date_now
         .signed_duration_since(Utc.datetime_from_str(&last_fetch_at, "%Y-%m-%d %H:%M:%S%.f UTC")?);
-    let one_hour = Duration::minutes(1);
+    let one_hour = Duration::minutes(60);
 
     println!("date_now: {}", date_now);
     println!("last_fetch_at: {}", &last_fetch_at);
