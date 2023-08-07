@@ -40,7 +40,7 @@ fn handle_serverless_events(_req: Request) -> Result<Response> {
             eprintln!("Error while fetching last_fetch_at: {}", err);
             let now_date = Utc::now().to_string();
             store.set("last_fetch_at", &now_date)?;
-            println!("set_last_fetch_at: {}", now_date);
+            //println!("set_last_fetch_at: {}", now_date);
             now_date
         }
     };
@@ -48,24 +48,24 @@ fn handle_serverless_events(_req: Request) -> Result<Response> {
     let date_now = Utc::now();
     let diff: Duration = date_now
         .signed_duration_since(Utc.datetime_from_str(&last_fetch_at, "%Y-%m-%d %H:%M:%S%.f UTC")?);
-    let one_hour = Duration::minutes(1);
+    let one_hour = Duration::minutes(60);
 
-    println!("date_now: {}", date_now);
-    println!("last_fetch_at: {}", &last_fetch_at);
+    // println!("date_now: {}", date_now);
+    // println!("last_fetch_at: {}", &last_fetch_at);
 
     if diff > one_hour {
         let now_date = Utc::now().to_string();
         store.set("last_fetch_at", &now_date)?;
-        println!("set_last_fetch_at: {}", now_date);
+        //println!("set_last_fetch_at: {}", now_date);
 
         for loc_url in &meetup_loc {
-            println!("{}", loc_url);
+            //println!("{}", loc_url);
             let body = fetch_meetup_upcoming_event(loc_url)?;
             parse_meetup_fragment(body, loc_url, &mut array_events)
         }
 
         for loc_url in &hasgeek_loc {
-            println!("hasgeek_loc, {}", loc_url);
+            //println!("hasgeek_loc, {}", loc_url);
             let body = fetch_hasgeek_upcoming_data(loc_url)?;
             parse_hasgeek_fragment(body, loc_url, &mut array_events);
         }
@@ -224,7 +224,7 @@ fn parse_hasgeek_fragment(
         }
     } else {
         //hasgeek past events
-        println!("hasgeek_past events, {}", loc_url);
+        //println!("hasgeek_past events, {}", loc_url);
         let past_body = fetch_hasgeek_past_data(loc_url);
 
         parse_hasgeek_past_event_fragment(past_body.unwrap(), loc_url, array_events)
@@ -338,7 +338,6 @@ fn fetch_meetup_past_event(location: &str) -> Result<String> {
 
 fn fetch_hasgeek_upcoming_data(location: &str) -> Result<String> {
     let url = format!("{}/{}", HASGEEK_BASE_URL, location);
-    println!("{}",url);
     fetch_html(&url)
 }
 
