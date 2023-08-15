@@ -1,1 +1,1 @@
-/home/ws-hp-2023/rust/serverless-events/target/wasm32-wasi/release/serverless_events.wasm: /home/ws-hp-2023/rust/serverless-events/src/lib.rs
+/home/ws-hp-2023/rust/serverless-events/target/wasm32-wasi/release/serverless_events.wasm: /home/ws-hp-2023/rust/serverless-events/src/global.rs /home/ws-hp-2023/rust/serverless-events/src/hasgeek.rs /home/ws-hp-2023/rust/serverless-events/src/lib.rs /home/ws-hp-2023/rust/serverless-events/src/luma.rs /home/ws-hp-2023/rust/serverless-events/src/meetup.rs

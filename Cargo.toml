@@ -1,5 +1,5 @@
 [package]
-name = "serverless-events"
+name = "serverless_events"
 description = "Rust India upcoming Events"
 version = "0.1.0"
 edition = "2021"
