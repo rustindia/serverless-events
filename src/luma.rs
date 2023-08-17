@@ -4,7 +4,7 @@ use serde_json::Value;
 use chrono::{DateTime, FixedOffset, TimeZone, Utc};
 use crate::DataRustIndiaEvents;
 use crate::fetch_html;
-const LUMA_BASE_URL: &str = "https://lu.ma/rust-mumbai";
+const LUMA_BASE_URL: &str = "https://lu.ma/rust-mumbai-2";
 
 pub fn fetch_luma_data() -> Result<String> {
     fetch_html(LUMA_BASE_URL)
