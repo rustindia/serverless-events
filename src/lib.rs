@@ -45,7 +45,7 @@ fn handle_rust_india_events(_req: Request) -> Result<Response> {
     let date_now = Utc::now();
     let diff: Duration = date_now
         .signed_duration_since(Utc.datetime_from_str(&last_fetch_at, "%Y-%m-%d %H:%M:%S%.f UTC")?);
-    let one_hour = Duration::minutes(1);
+    let one_hour = Duration::minutes(60);
 
     if diff > one_hour {
         let now_date = Utc::now().to_string();
