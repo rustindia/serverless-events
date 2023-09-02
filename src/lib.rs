@@ -29,8 +29,8 @@ fn handle_rust_india_events(_req: Request) -> Result<Response> {
     let store: Store = Store::open_default()?;
 
     let mut array_events: Vec<DataRustIndiaEvents> = vec![];
-    let meetup_loc: [&str; 3] = ["rust-pune", "rust-hyderabad", "rustdelhi"];
-    let hasgeek_loc: [&str; 3] = ["rustlangin", "keralars", "rustchandigarh"];
+    let meetup_loc = ["rust-pune", "rust-hyderabad", "rustdelhi"];
+    let hasgeek_loc = ["keralars", "rustchandigarh"];
 
     let last_fetch_at = match store.get("last_fetch_at") {
         Ok(value) => String::from_utf8_lossy(value.as_ref()).to_string(),
@@ -45,7 +45,7 @@ fn handle_rust_india_events(_req: Request) -> Result<Response> {
     let date_now = Utc::now();
     let diff: Duration = date_now
         .signed_duration_since(Utc.datetime_from_str(&last_fetch_at, "%Y-%m-%d %H:%M:%S%.f UTC")?);
-    let one_hour = Duration::minutes(60);
+    let one_hour = Duration::minutes(1);
 
     if diff > one_hour {
         let now_date = Utc::now().to_string();
