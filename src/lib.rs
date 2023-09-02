@@ -30,7 +30,7 @@ fn handle_rust_india_events(_req: Request) -> Result<Response> {
 
     let mut array_events: Vec<DataRustIndiaEvents> = vec![];
     let meetup_loc = ["rust-pune", "rust-hyderabad", "rustdelhi"];
-    let hasgeek_loc = ["keralars", "rustchandigarh"];
+    let hasgeek_loc = ["rustbangalore", "keralars", "rustchandigarh"];
 
     let last_fetch_at = match store.get("last_fetch_at") {
         Ok(value) => String::from_utf8_lossy(value.as_ref()).to_string(),

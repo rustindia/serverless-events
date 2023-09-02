@@ -18,10 +18,10 @@ pub fn add_event_to_array_events(
     sort_date: String,
 ) -> DataRustIndiaEvents {
     let event = match loc_url {
-        "rust-pune" | "rust-hyderabad" | "rustdelhi" | "rustlangin" | "kerala"
+        "rust-pune" | "rust-hyderabad" | "rustdelhi" | "rustbangalore" | "kerala"
         | "rustchandigarh" => {
             let community = match loc_url {
-                "rustlangin" => "Rust Bangalore",
+                "rustbangalore" => "Rust Bangalore",
                 "kerala" => "Rust Kerala",
                 "rustchandigarh" => "Rust Chandigarh",
                 "rust-pune" => "Rust Pune",
